@@ -9,6 +9,9 @@
 	/* line-height; init, heading */
 	--brdj-lh-init: 32pt;
 	--brdj-lh-head: 1.1;
+	--brdj-lh-mono: 12pt;
+
+	--brdj-fs-mono: 12pt;
 
 	/* max-length */
 	--brdj-max-len: 65ch;
@@ -122,6 +125,8 @@
 	kbd,
 	samp {
 		font-family: var( --brdj-font-mono );
+		line-height: var( --brdj-lh-mono );
+		font-size: var( --brdj-fs-mono );
 	}
 	p,
 	li,
