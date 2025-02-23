@@ -1,0 +1,186 @@
+/* role='' */
+/* @layer custom, breakpoints, components, reboot, reset; */
+:root {
+	--font-family-init: system-ui;
+	--font-family-head: system-ui;
+	--font-family-mono: ui-monospace;
+
+	--font-line-height-init: 32pt;
+	--font-line-height-head: 1.1;
+
+	--text-max-len: 65ch;
+
+	--font-family-brand: "Inter", system-ui;
+
+	--brand-color-pink: rgba(255,27,96,1);
+	--brand-color-dark: rgba(14,14,14,1);
+	--brand-color-card-border: rgba(220, 220, 220, 1);
+
+}
+
+@layer breakpoints {
+	
+}
+@layer components {
+	:root {
+		--layout-full-padding: 1rem;
+		--layout-flared-padding: 2rem;
+		--layout-flared-width: 1920px;
+		--layout-con-width: 1280px;
+		
+		--layout-size-full: minmax(var(--layout-full-padding), 1fr);
+		--layout-size-con: min(calc( 100% - ( (var(--layout-full-padding) + var(--layout-flared-padding)) * 2 )), var(--layout-con-width));
+
+		--layout-size-flared: minmax(0, calc( ( var(--layout-flared-width) - var(--layout-con-width)) * 0.5 ));
+		
+	}
+	.foundational {
+		min-height: 100vh;
+	}
+	.grid-flow {
+		display: grid;
+	}
+	.primary-container {
+		display: grid;
+		grid-auto-flow: row dense;
+		grid-template-columns: 
+			[full-start] var(--layout-size-full)
+			[flared-start] var(--layout-size-flared)
+			[contained-start] var(--layout-size-con)  [contained-end]
+			var(--layout-size-flared) [flared-end]
+			var(--layout-size-full) [full-end];
+	}
+	
+	.primary-container > * {
+		grid-column: contained;
+		display: grid;
+	}
+	.primary-container > .flared {
+		grid-column: flared;
+		display: grid;
+	}
+	.primary-container > .full-container {
+		grid-column: full;
+		display: grid;
+	}
+	.primary-container > .primary-content {
+		grid-column: contained;
+		display: grid;
+	}
+}
+@layer reboot {
+
+	h1, 
+	h2, 
+	h3, 
+	h4, 
+	p,
+	figure, 
+	blockquote, 
+	dl, 
+	dd {
+		margin-block-end: 0;
+		margin-block-start: 0;
+	}
+
+	:where( ul, ol ):where( [class] ) {
+		list-style: '';
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		min-height: 100vh;
+		line-height: var(--font-line-height-init);
+	}
+
+	h1, 
+	h2, 
+	h3, 
+	h4,
+	button, 
+	input, 
+	label {
+ 		line-height: var(--font-line-height-head);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		text-wrap: balance;
+		font-family: var(--font-family-head);
+	}
+	code,
+	pre,
+	kbd,
+	samp {
+		font-family: var(--font-family-mono);
+	}
+	p,
+	li,
+	figcaption {
+		max-width: var(--text-max-len);
+		text-wrap: pretty;
+	}
+	:target {
+		scroll-margin-block: 3rem;
+		scroll-margin-block: 4rlh;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		html {
+			scroll-behavior: smooth;
+		}
+	}
+	textarea:not([rows]) {
+		min-height: 10em;
+	}
+	.in-scroll {
+		overflow-y: auto;
+		overscroll-behavior: contain;
+	}
+
+}
+@layer reset {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	button:not(:disabled) {
+		cursor: pointer;
+	}
+	html {
+		-moz-text-size-adjust: none;
+		-webkit-text-size-adjust: none;
+		text-size-adjust: none;
+		font-family: var(--font-family-init);
+		color-scheme: light dark;
+		interpolate-size: allow-keywords;
+	}
+
+	body {
+		margin: 0;
+	}
+	img,
+	picture {
+		max-width: 100%;
+		display: block;
+	}
+	input, 
+	button,
+	textarea, 
+	select {
+  		font-family: inherit;
+  		font-size: inherit;
+	}
+	td,
+	math,
+	time[datetime*=":"] {
+		font-variant-numeric: tabular-nums lining-nums;
+	}
+}
+
+@layer custom {
+	
+}
