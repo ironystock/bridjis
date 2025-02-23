@@ -1,20 +1,21 @@
 /* role='' */
 /* @layer custom, breakpoints, components, reboot, reset; */
 :root {
-	--font-family-init: system-ui;
-	--font-family-head: system-ui;
-	--font-family-mono: ui-monospace;
+	/* font-family; init, heading, monospaced */
+	--brdj-font-init: system-ui;
+	--brdj-font-head: system-ui;
+	--brdj-font-mono: ui-monospace;
 
-	--font-line-height-init: 32pt;
-	--font-line-height-head: 1.1;
+	/* line-height; init, heading */
+	--brdj-lh-init: 32pt;
+	--brdj-lh-head: 1.1;
 
-	--text-max-len: 65ch;
+	/* max-length */
+	--brdj-max-len: 65ch;
 
-	--font-family-brand: "Inter", system-ui;
-
-	--brand-color-pink: rgba(255,27,96,1);
-	--brand-color-dark: rgba(14,14,14,1);
-	--brand-color-card-border: rgba(220, 220, 220, 1);
+	/* list style; ul, ol */
+	--brdj-ls-ul: '';
+	--brdj-ls-ol: '';
 
 }
 
@@ -23,15 +24,15 @@
 }
 @layer components {
 	:root {
-		--layout-full-padding: 1rem;
-		--layout-flared-padding: 2rem;
-		--layout-flared-width: 1920px;
-		--layout-con-width: 1280px;
+		--brdj-full-offset: 1rem;
+		--brdj-flared-offset: 2rem;
+		--brdj-flared-width: 1920px;
+		--brdj-con-width: 1280px;
 		
-		--layout-size-full: minmax(var(--layout-full-padding), 1fr);
-		--layout-size-con: min(calc( 100% - ( (var(--layout-full-padding) + var(--layout-flared-padding)) * 2 )), var(--layout-con-width));
+		--brdj-full: minmax(var(--brdj-full-offset), 1fr);
+		--brdj-con: min(calc( 100% - ( (var(--brdj-full-offset) + var(--brdj-flared-offset)) * 2 )), var(--brdj-con-width));
 
-		--layout-size-flared: minmax(0, calc( ( var(--layout-flared-width) - var(--layout-con-width)) * 0.5 ));
+		--brdj-flared: minmax(0, calc( ( var(--brdj-flared-width) - var(--brdj-con-width)) * 0.5 ));
 		
 	}
 	.foundational {
@@ -40,30 +41,30 @@
 	.grid-flow {
 		display: grid;
 	}
-	.primary-container {
+	.brdj-primary {
 		display: grid;
 		grid-auto-flow: row dense;
 		grid-template-columns: 
-			[full-start] var(--layout-size-full)
-			[flared-start] var(--layout-size-flared)
-			[contained-start] var(--layout-size-con)  [contained-end]
-			var(--layout-size-flared) [flared-end]
-			var(--layout-size-full) [full-end];
+			[full-start] var(--brdj-full)
+			[flared-start] var(--brdj-flared)
+			[contained-start] var(--brdj-con)  [contained-end]
+			var(--brdj-flared) [flared-end]
+			var(--brdj-full) [full-end];
 	}
 	
-	.primary-container > * {
+	.brdj-primary > * {
 		grid-column: contained;
 		display: grid;
 	}
-	.primary-container > .flared {
+	.brdj-primary > .brdj-flared {
 		grid-column: flared;
 		display: grid;
 	}
-	.primary-container > .full-container {
+	.brdj-primary > .brdj-container {
 		grid-column: full;
 		display: grid;
 	}
-	.primary-container > .primary-content {
+	.brdj-primary > .brdj-content {
 		grid-column: contained;
 		display: grid;
 	}
@@ -83,15 +84,20 @@
 		margin-block-start: 0;
 	}
 
-	:where( ul, ol ):where( [class] ) {
-		list-style: '';
+	:where( ul ):where( [class] ) {
+		list-style: var( --brdj-ls-ul );
+		margin: 0;
+		padding: 0;
+	}
+	:where( ol ):where( [class] ) {
+		list-style: var( --brdj-ls-ol );
 		margin: 0;
 		padding: 0;
 	}
 
 	body {
 		min-height: 100vh;
-		line-height: var(--font-line-height-init);
+		line-height: var( --brdj-lh-init );
 	}
 
 	h1, 
@@ -101,7 +107,7 @@
 	button, 
 	input, 
 	label {
- 		line-height: var(--font-line-height-head);
+ 		line-height: var( --brdj-lh-head );
 	}
 
 	h1,
@@ -109,18 +115,18 @@
 	h3,
 	h4 {
 		text-wrap: balance;
-		font-family: var(--font-family-head);
+		font-family: var( --brdj-font-head );
 	}
 	code,
 	pre,
 	kbd,
 	samp {
-		font-family: var(--font-family-mono);
+		font-family: var( --brdj-font-mono );
 	}
 	p,
 	li,
 	figcaption {
-		max-width: var(--text-max-len);
+		max-width: var( --brdj-max-len );
 		text-wrap: pretty;
 	}
 	:target {
@@ -154,7 +160,7 @@
 		-moz-text-size-adjust: none;
 		-webkit-text-size-adjust: none;
 		text-size-adjust: none;
-		font-family: var(--font-family-init);
+		font-family: var( --brdj-font-init );
 		color-scheme: light dark;
 		interpolate-size: allow-keywords;
 	}
@@ -181,6 +187,3 @@
 	}
 }
 
-@layer custom {
-	
-}

@@ -1,0 +1,32 @@
+@layer custom {
+	:root {
+		/* font-family; init, heading, monospaced */
+		--brdj-font-init: system-ui;
+		--brdj-font-head: system-ui;
+		--brdj-font-mono: ui-monospace;
+
+		/* line-height; init, heading */
+		--brdj-lh-init: 32pt;
+		--brdj-lh-head: 1.1;
+
+		/* max-length */
+		--brdj-max-len: 65ch;
+
+		/* list style; ul, ol */
+		--brdj-ls-ul: '';
+		--brdj-ls-ol: '';
+
+
+		--brdj-full-offset: 1rem;
+		--brdj-flared-offset: 2rem;
+		--brdj-flared-width: 1920px;
+		--brdj-con-width: 1280px;
+
+		/* font-family; branding */
+		--brdj-font-brand: "Inter", system-ui;
+
+		--brdj-brand-pink: rgba(255,27,96,1);
+		--brdj-brand-dark: rgba(14,14,14,1);
+		--brdj-brand-card-border: rgba(220, 220, 220, 1);
+	}
+}
