@@ -38,10 +38,10 @@
 		--brdj-flared: minmax(0, calc( ( var(--brdj-flared-width) - var(--brdj-con-width)) * 0.5 ));
 		
 	}
-	.foundational {
+	.brdj-foundation {
 		min-height: 100vh;
 	}
-	.grid-flow {
+	.brdj-grid-flow {
 		display: grid;
 	}
 	.brdj-primary {
@@ -63,7 +63,7 @@
 		grid-column: flared;
 		display: grid;
 	}
-	.brdj-primary > .brdj-container {
+	.brdj-primary > .brdj-full {
 		grid-column: full;
 		display: grid;
 	}
